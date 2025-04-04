@@ -123,7 +123,7 @@ fi
 
 # Create files for the generator target
 output_base_hash=$(echo "$output_base" | "$md5_command" | awk '{print $1}')
-readonly generator_package_directory="/var/tmp/rules_xcodeproj/generated_v2/$output_base_hash/%generator_package_name%"
+readonly generator_package_directory="$DACS/bazel/tmp/rules_xcodeproj/generated_v2/$output_base_hash/%generator_package_name%"
 
 mkdir -p "$generator_package_directory"
 cp "$generator_build_file" "$generator_package_directory/BUILD"
