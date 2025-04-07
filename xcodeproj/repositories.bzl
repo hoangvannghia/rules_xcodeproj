@@ -73,9 +73,12 @@ package_group(
 
     # Ensure that this repository is unique per output base
     output_base_hash = output_base_hash_result.stdout.strip()
+    dacs = repository_ctx.os.environ.get("DACS")
+    if not dacs:
+        fail("The DACS environment variable is not set")
     repository_ctx.symlink(
-        "/Users/hoangvannghia/meili/neo.hoang_dacs_at_okg.com/121/bazel/tmp/rules_xcodeproj/generated_v2/{}/generator".format(output_base_hash),
-        "generator",
+        "{}/bazel/tmp/rules_xcodeproj/generated_v2/{}/generator".format(dacs, output_base_hash),
+        "generator"
     )
 
 generated_files_repo = repository_rule(
